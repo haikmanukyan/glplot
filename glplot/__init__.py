@@ -10,5 +10,7 @@ def create_canvas():
 
 def show(): App(canvas).run()
 def scatter(*args, **kwargs): canvas.scatter(*args, **kwargs)
+def plot(*args, **kwargs): canvas.plot(*args, **kwargs)
+def graph(*args, **kwargs): canvas.graph(*args, **kwargs)
 def cube(*args, **kwargs): canvas.cube(*args, **kwargs)
 

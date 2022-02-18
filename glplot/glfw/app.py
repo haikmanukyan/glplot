@@ -14,7 +14,7 @@ class App:
         self.init_window()
         self.init_camera()
         self.init_mouse()
-        # self.init_lighting()
+        self.init_lighting()
 
         self.canvas = canvas
 
