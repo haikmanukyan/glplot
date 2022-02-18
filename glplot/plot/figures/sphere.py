@@ -10,7 +10,7 @@ class PointCloud(BaseFigure):
         self.radius = 10.0
         self.color=[1, 0, 0]
 
-    def draw(self):
+    def draw_figure(self):
         glVertexPointer(3, GL_FLOAT, 0, self.points.flatten())
         glEnableClientState(GL_VERTEX_ARRAY)
         glColor3fv(self.color)

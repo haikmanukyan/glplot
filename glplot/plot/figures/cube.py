@@ -25,7 +25,7 @@ class Cube(BaseFigure):
         super().__init__()
         self.color = c
 
-    def draw(self):
+    def draw_figure(self):
         glColor3f(*self.color)
         glMaterialfv(GL_FRONT, GL_SPECULAR, (1, 1, 1, 1.))
         glMaterialfv(GL_FRONT, GL_SHININESS, 10.)

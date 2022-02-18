@@ -1,10 +1,12 @@
+import time
+
 import glfw
 from glfw.GLFW import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
 
-from glplot.gl.event import Event
 from glplot.gl import gldraw
+from glplot.gl.event import Event
 from glplot.glfw.camera import Camera
 
 class App:
@@ -17,6 +19,7 @@ class App:
         self.init_lighting()
 
         self.canvas = canvas
+        self.fps = 60.
 
 
     def init_lighting(self):
@@ -56,7 +59,6 @@ class App:
         glMatrixMode(GL_MODELVIEW)
         glEnable(GL_DEPTH_TEST)
 
-
     def init_events(self):
         self.onClick = Event()
         self.onKeyUp = Event()
@@ -68,14 +70,19 @@ class App:
         glfwSetScrollCallback(self.window, self.onScroll)
 
     def run(self):
+        last = time.time()
         while not glfw.window_should_close(self.window):
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-            
+
             self.canvas.draw()
             self.canvas.update()
 
             self.camera.update_view()
             glfw.swap_buffers(self.window)
             glfw.poll_events()
+
+            current = time.time()
+            elapsed, last = current - last, current
+            time.sleep(max(0, 1 / self.fps - elapsed))
 
         glfw.terminate()

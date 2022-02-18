@@ -1,47 +1,30 @@
-import glplot
+import glplot as glp
 import numpy as np
 
+from glplot.plot.figures.graph import Graph
 
-skeleton_verts = np.float32([
-        [     0.0000,      0.0000,      0.9329],
-        [     0.1325,     -0.0000,      0.9436],
-        [     0.1270,     -0.0265,      0.5015],
-        [     0.1278,     -0.1126,      0.0555],
-        [     0.1514,      0.0397,      0.0033],
-        [     0.1699,      0.1090,      0.0251],
-        [    -0.1325,     -0.0000,      0.9222],
-        [    -0.1430,     -0.0460,      0.4819],
-        [    -0.1548,     -0.1363,      0.0369],
-        [    -0.1864,      0.0199,      0.0038],
-        [    -0.2096,      0.0878,      0.0256],
-        [    -0.0077,     -0.0019,      1.1662],
-        [     0.0090,     -0.0476,      1.4187],
-        [    -0.0086,      0.0428,      1.4973],
-        [     0.0164,     -0.0317,      1.5812],
-        [    -0.1312,     -0.0586,      1.3637],
-        [    -0.4037,     -0.0268,      1.3137],
-        [    -0.6479,      0.0285,      1.2877],
-        [    -0.6667,      0.1246,      1.3079],
-        [    -0.7403,      0.0042,      1.3175],
-        [     0.1481,     -0.0429,      1.3598],
-        [     0.4161,     -0.0147,      1.2881],
-        [     0.6630,      0.0340,      1.2815],
-        [     0.7025,      0.1176,      1.3195],
-        [     0.7881,     -0.0228,      1.2762]
-])
+# points = np.random.randn(100, 100, 3)
+# glp.scatter(points, color = (1.0,0.2,0))
 
+t = 0.01 * np.arange(1000)[:,None]
+X = np.cos(t) * np.arange(10)
+Y = np.sin(t) * np.arange(10)
+Z = X**2 + Y**2
+
+color = np.tile(np.arange(0,1,0.001)[:,None], (1,3))
+color[:,1:] = 0
+print (color)
+glp.plot(X, Y, Z, color = color)
+
+# glp.cube(c = [0.8, 0.5, 0.])
+
+skeleton_verts = np.load('build/sample.npy')
 skeleton_tree = [0, 0, 1, 2, 3, 4, 0, 6, 7, 8, 9, 0, 11, 12, 13, 12, 15, 16, 17, 18, 12, 20, 21, 22, 23]
 skeleton_edges = list(zip(range(len(skeleton_tree)), skeleton_tree))
-glplot.graph(skeleton_verts + [0,0,1], skeleton_edges, c = [0,0.5,0.8])
 
-points = np.random.randn(100, 3)
-glplot.scatter(points)
+# glp.graph(skeleton_verts[:100], skeleton_edges)
+# rotation = np.stack([np.zeros(100), np.zeros(100), np.arange(100)], -1)
+# figure = Graph(skeleton_verts, skeleton_edges, color = [1,0,0], rotation = rotation)
+# glp.canvas.add(figure)
 
-X = 0.5 * np.arange(10)
-Y = X.copy()
-Z = X**0.5 + Y**0.5
-glplot.plot(X, Y, Z)
-
-
-glplot.cube(c = [0.8, 0.5, 0.])
-glplot.show()
+glp.show()

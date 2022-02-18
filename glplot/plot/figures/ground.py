@@ -7,9 +7,8 @@ class Ground(BaseFigure):
     def __init__(self):
         super().__init__()
 
-    def draw(self):
+    def draw_figure(self):
         size = 5
-        # glColor3fv([183 / 255., 180 / 255., 189 / 255.])
         glColor3fv([0.,0.,0.])
 
         for i in range(-size, size):
