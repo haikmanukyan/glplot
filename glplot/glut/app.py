@@ -124,7 +124,6 @@ class App:
         if key == GLUT_KEY_F2:
             self.camera.euler = [0., pi / 2, 0.]
         if key == GLUT_KEY_F3:
-            print (self.camera.euler)
             self.camera.euler = [pi / 2, pi / 2, 0.]
 
     def keyUpFunc(self, key, x, y):

@@ -2,7 +2,8 @@ import glplot
 import numpy as np
 
 
-skeleton_verts = np.float32([[     0.0000,      0.0000,      0.9329],
+skeleton_verts = np.float32([
+        [     0.0000,      0.0000,      0.9329],
         [     0.1325,     -0.0000,      0.9436],
         [     0.1270,     -0.0265,      0.5015],
         [     0.1278,     -0.1126,      0.0555],
@@ -26,7 +27,8 @@ skeleton_verts = np.float32([[     0.0000,      0.0000,      0.9329],
         [     0.4161,     -0.0147,      1.2881],
         [     0.6630,      0.0340,      1.2815],
         [     0.7025,      0.1176,      1.3195],
-        [     0.7881,     -0.0228,      1.2762]])
+        [     0.7881,     -0.0228,      1.2762]
+])
 
 skeleton_tree = [0, 0, 1, 2, 3, 4, 0, 6, 7, 8, 9, 0, 11, 12, 13, 12, 15, 16, 17, 18, 12, 20, 21, 22, 23]
 skeleton_edges = list(zip(range(len(skeleton_tree)), skeleton_tree))
@@ -37,7 +39,7 @@ glplot.scatter(points)
 
 X = 0.5 * np.arange(10)
 Y = X.copy()
-Z = X**2 + Y**2
+Z = X**0.5 + Y**0.5
 glplot.plot(X, Y, Z)
 
 

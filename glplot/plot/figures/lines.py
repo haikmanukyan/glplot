@@ -8,7 +8,6 @@ class Lines(BaseFigure):
         super().__init__()
         points = np.stack([X,Y,Z], -1)
         self.points = np.stack([points[:-1],points[1:]], 1).reshape(-1,3)
-        print (self.points.shape)
         self.radius = 10.0
         self.color = c
 

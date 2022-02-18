@@ -31,7 +31,10 @@ class Camera:
             cos(self.euler[0]) * sin(self.euler[1]),
             sin(self.euler[0]),
         ])
-        gluLookAt(*(self.target + self.distance * self.direction), *self.target, 0,0,1)
+
+        camera_position = self.target + self.distance * self.direction
+        glLight(GL_LIGHT0, GL_POSITION, camera_position)
+        gluLookAt(*camera_position, *self.target, 0,0,1)
     
     def onMouseDrag(self, window, xpos, ypos):
         dx, dy = (xpos - self.app.xpos), (ypos - self.app.ypos)

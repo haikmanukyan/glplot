@@ -17,6 +17,9 @@ class Canvas:
     def draw(self):
         for figure in self.figures:
             figure.draw()
+    def update(self):
+        for figure in self.figures:
+            figure.update()
     
     def add(self, figure):
         self.figures.append(figure)

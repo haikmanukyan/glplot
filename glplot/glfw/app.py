@@ -45,14 +45,14 @@ class App:
 
     def init_glfw(self):
         if not glfw.init(): return
-        self.window = glfw.create_window(640, 480, "App", None, None)
+        self.window = glfw.create_window(800, 800, "GLPlot", None, None)
         if not self.window: glfw.terminate()
         glfw.make_context_current(self.window)
 
     def init_window(self):
         glClearColor(1.0,1.0,1.0,1.0)
         glMatrixMode(GL_PROJECTION)
-        gluPerspective(45, 640 / 480., 0.1, 100.0)
+        gluPerspective(45, 1., 0.1, 100.0)
         glMatrixMode(GL_MODELVIEW)
         glEnable(GL_DEPTH_TEST)
 
@@ -72,6 +72,7 @@ class App:
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
             
             self.canvas.draw()
+            self.canvas.update()
 
             self.camera.update_view()
             glfw.swap_buffers(self.window)
