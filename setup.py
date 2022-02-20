@@ -2,8 +2,6 @@
 
 from setuptools import setup, find_packages
 
-print (find_packages())
-
 setup(name='GLPlot',
       version='0.1.0',
       description='An OpenGL based interactive plotting library for python',

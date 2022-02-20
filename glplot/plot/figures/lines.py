@@ -1,5 +1,6 @@
 from OpenGL.GL import *
 from OpenGL.GLU import *
+from glplot.plot.animated_attr import AnimatedAttr
 
 from glplot.plot.base_figure import BaseFigure
 import numpy as np
@@ -12,7 +13,7 @@ class Lines(BaseFigure):
             points_arr.append(points[...,i,:])
             points_arr.append(points[...,i+1,:])
         points = np.stack(points_arr, 1)
-        self.points = self.animated_attr(points, 2)
+        self.points = AnimatedAttr(self, points, 2)
         self.radius = 10.0
 
     def draw_figure(self):
